@@ -1,0 +1,404 @@
+.inbox-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .sidebar {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--text-color);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .car-list {
+            list-style: none;
+        }
+        
+        .car-list li {
+            margin-bottom: 10px;
+        }
+        
+        .car-list a {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .car-list a:hover {
+            background-color: var(--section-background);
+        }
+        
+        .car-list a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .inbox-messages {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+        
+        .inbox-header {
+            background-color: var(--section-background);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .inbox-header h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        .message-count {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        .message-count strong {
+            color: var(--primary-color);
+        }
+        
+        .message-list {
+            list-style: none;
+        }
+        
+        .message-item {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .message-item:hover {
+            background-color: var(--section-background);
+        }
+        
+        .message-item.unread {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .message-item.unread:hover {
+            background-color: rgba(52, 152, 219, 0.15);
+        }
+        
+        .message-item.unread::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .message-item.expanded {
+            background-color: var(--section-background);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .sender-info {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .message-date {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        .car-info {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        .message-preview {
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 80%;
+        }
+        
+        .message-content {
+            display: none;
+            background-color: var(--section-background);
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 6px;
+        }
+        
+        .message-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .message-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .message-actions button {
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .reply-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .reply-btn:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        .mark-read-btn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color) !important;
+        }
+        
+        .mark-read-btn:hover {
+            background-color: var(--section-background);
+            color: var(--text-color);
+        }
+        
+        .empty-state {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+        
+        .empty-state svg {
+            width: 60px;
+            height: 60px;
+            color: var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .empty-state h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: var(--text-color);
+        }
+        
+        .empty-state p {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 992px) {
+            .inbox-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                margin-bottom: 20px;
+            }
+            
+            .car-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .car-list li {
+                margin-bottom: 0;
+                flex-grow: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .message-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .car-info {
+                margin-top: 5px;
+            }
+        }
+
+        .car-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .car-list-main {
+            flex-grow: 1;
+        }
+        
+        .car-list-item a {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .car-list-item a:hover {
+            background-color: var(--section-background);
+        }
+        
+        .car-list-item a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .car-actions {
+            display: flex;
+            gap: 5px;
+            margin-left: 5px;
+        }
+        
+        .car-edit-btn, .car-delete-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-muted);
+        }
+        
+        .car-edit-btn:hover {
+            background-color: var(--section-background);
+            color: var(--primary-color);
+        }
+        
+        .car-delete-btn:hover {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        
+        .close-modal:hover {
+            color: var(--text-color);
+        }
+        
+        .modal h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .modal p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .warning {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .cancel-btn, .delete-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .cancel-btn {
+            background-color: var(--section-background);
+            color: var(--text-color);
+        }
+        
+        .cancel-btn:hover {
+            background-color: var(--border-color);
+        }
+        
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .car-list-item {
+                width: 100%;
+            }
+        }

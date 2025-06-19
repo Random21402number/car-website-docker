@@ -1,0 +1,377 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure the body takes up the full height */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-attachment: fixed; /* Keep background fixed */
+}
+
+/* Add a subtle pattern to the background (using local image) */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: gray;
+    opacity: 0; /* Light opacity to keep the pattern in the background */
+    pointer-events: none; /* Prevent the pattern from interfering with the layout */
+    background-size: auto; /* The image will keep its original size */
+    background-repeat: repeat; /* The image will repeat both horizontally and vertically */
+    background-position: top left;
+}
+
+/* Opacity overlay to help text stand out */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1); /* Semi-transparent dark overlay */
+    z-index: -1; /* Keep the overlay behind content */
+}
+
+/* Responsive Design */
+html {
+    font-size: 100%;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header .logo {
+    flex: 0 0 auto;
+}
+
+header .logo a {
+    color: #fff;
+    font-size: 1.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Ensure the nav-container takes up all available space */
+header .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    flex: 1;
+    gap: 20px;
+}
+
+/* Main nav items */
+header nav {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Add this to push the profile to the right */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+header nav ul li {
+    margin: 0 0.8rem;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.7rem;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+header nav ul li a:hover {
+    background: #007BFF;
+    color: #fff;
+}
+
+/* Make sure the profile container stays to the right */
+.profile-container {
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+}
+
+.profile-wrapper {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+}
+
+/* Fix the profile picture display */
+header .profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+.profile-pic:hover {
+    border-color: #0066cc;
+    transform: scale(1.05);
+}
+
+/* Profile Dropdown Menu */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.profile-dropdown a {
+    color: #333 !important;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f1f1f1;
+    color: #007BFF !important;
+}
+
+/* Show class for dropdown visibility */
+.profile-dropdown.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Dropdown animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+    
+    header .nav-container {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    header nav ul.show {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #333;
+        z-index: 10;
+        padding: 1rem 0;
+    }
+    
+    header nav ul li {
+        margin: 0.3rem 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    header nav ul li a {
+        display: block;
+        padding: 0.8rem 1rem;
+    }
+    
+    .hamburger-menu {
+        display: block;
+        order: 2;
+    }
+    
+    header .profile-container {
+        display: flex;
+        align-items: center;
+        margin-left: auto; /* Push to the right */
+        position: relative;
+    }
+    
+    .profile-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%; /* Changed from fixed pixel value to relative positioning */
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 100;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 5px; /* Add some spacing between profile pic and dropdown */
+    }
+}
+
+/* Hero Section - Oval Shape */
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    background: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(75, 0, 130, 0.7)); /* Blue to Purple */
+    background-size: cover;
+    background-position: center;
+    height: 60vh; /* Height of hero section */
+    width: 80%; /* Width for the section */
+    border-radius: 50px; /* Oval shape */
+    margin: 5vh auto; /* Center the hero section and leave space top and bottom */
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 4rem; /* Space between sections */
+}
+
+.hero-text {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 4px #000;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-text p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #fff;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.hero-text .btn:hover {
+    background: #0056b3;
+    color: #fff;
+}
+
+/* Info Blending - We Are and We Provide Text Below Welcome */
+.info-blend {
+    background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(75, 0, 130, 0.6)); /* Blue to Purple Blend */
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    max-width: 900px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 50px; /* Oval shape */
+    box-shadow: none; /* Remove any shadow effect */
+}
+
+.info-blend h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-blend p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* About Section */
+#about {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#about p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #007BFF;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

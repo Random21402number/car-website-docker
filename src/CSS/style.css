@@ -1,0 +1,272 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure the body takes up the full height */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-attachment: fixed; /* Keep background fixed */
+}
+
+/* Add a subtle pattern to the background (using local image) */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: gray;
+    opacity: 0; /* Light opacity to keep the pattern in the background */
+    pointer-events: none; /* Prevent the pattern from interfering with the layout */
+    background-size: auto; /* The image will keep its original size */
+    background-repeat: repeat; /* The image will repeat both horizontally and vertically */
+    background-position: top left;
+}
+
+/* Opacity overlay to help text stand out */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1); /* Semi-transparent dark overlay */
+    z-index: -1; /* Keep the overlay behind content */
+}
+
+/* Responsive Design */
+html {
+    font-size: 100%;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 90%;
+    }
+
+    /* Header mobile adjustments */
+    header nav ul {
+        display: none; /* Hide the navigation menu by default on mobile */
+        flex-direction: column; /* Stack nav items vertically */
+        width: 100%;
+        align-items: center; /* Center the items */
+    }
+
+    header nav ul li a {
+        padding: 1rem;
+        border-top: 1px solid #fff;
+    }
+
+    header .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #fff;
+        padding: 0.5rem;
+    }
+
+    header nav ul.show {
+        display: flex; /* Show the nav items when the menu is toggled */
+    }
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+header .logo a {
+    color: #fff;
+    font-size: 1.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Main nav items (always horizontal) */
+header nav ul {
+    list-style: none;
+    display: flex; /* Use flex to align items horizontally by default */
+    justify-content: space-between; /* Space between nav items */
+    width: 60%; /* Adjust the width of the navigation */
+    flex-wrap: nowrap; /* Prevent wrapping for larger screens */
+}
+
+header nav ul li {
+    margin: 0 1rem; /* Space out the items */
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+header nav ul li a:hover {
+    background: #007BFF;
+    color: #fff;
+}
+
+/* Hamburger Menu (for additional options) */
+header .hamburger-menu {
+    display: none; /* Hide by default */
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+/* Show nav items when hamburger is toggled */
+header nav ul.show {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+/* Hero Section - Oval Shape */
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    background: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(75, 0, 130, 0.7)); /* Blue to Purple */
+    background-size: cover;
+    background-position: center;
+    height: 60vh; /* Height of hero section */
+    width: 80%; /* Width for the section */
+    border-radius: 50px; /* Oval shape */
+    margin: 5vh auto; /* Center the hero section and leave space top and bottom */
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 4rem; /* Space between sections */
+}
+
+.hero-text {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 4px #000;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-text p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #fff;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.hero-text .btn:hover {
+    background: #0056b3;
+    color: #fff;
+}
+
+/* Info Blending - We Are and We Provide Text Below Welcome */
+.info-blend {
+    background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(75, 0, 130, 0.6)); /* Blue to Purple Blend */
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    max-width: 900px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 50px; /* Oval shape */
+    box-shadow: none; /* Remove any shadow effect */
+}
+
+.info-blend h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-blend p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* About Section */
+#about {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#about p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #007BFF;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile Navigation */
+nav ul.show {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+nav ul.show li {
+    margin: 0.5rem 0;
+}

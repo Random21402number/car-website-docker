@@ -1,0 +1,620 @@
+/* Dark Theme Car Search Styling */
+:root {
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --background-dark: #121212;
+    --card-background: #1e1e1e;
+    --section-background: #252525;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --error-color: #e74c3c;
+    --border-color: #333333;
+    --success-color: #2ecc71;
+    --input-background: rgba(255, 255, 255, 0.05);
+    --input-hover: rgba(255, 255, 255, 0.1);
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+}
+
+.car-search-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-size: 32px;
+    margin-top: 40px;
+}
+.page-header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.add-car-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--section-background);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.add-car-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.add-car-btn svg {
+    stroke: var(--primary-color);
+    transition: stroke 0.3s ease;
+}
+
+.add-car-btn:hover svg {
+    stroke: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page-header-actions {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .add-car-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* Search Container */
+.search-container {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Search Box */
+.search-box {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease;
+}
+
+.search-box:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Search Form */
+.search-form {
+    width: 100%;
+}
+
+.search-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-input-container input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-input-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+    background-color: var(--input-hover);
+}
+
+/* Buttons */
+.primary-button {
+    padding: 14px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.primary-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button {
+    padding: 12px 20px;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-color);
+}
+
+/* Filter Toggle */
+.filter-toggle {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-filters-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.toggle-filters-btn:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.arrow-down {
+    transition: transform 0.3s ease;
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+}
+
+/* Search Filters */
+.search-filters {
+    display: none; /* Hidden by default */
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Explicitly set display block for when JS toggles this */
+.search-filters.active {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filter-section {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--section-background);
+    border-radius: 8px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 0;
+}
+
+.filter-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.filter-item select,
+.filter-item input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.filter-item select:focus,
+.filter-item input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+    background-color: var(--input-hover);
+}
+
+/* Price Slider */
+.price-slider-container {
+    padding: 0 10px;
+    margin-top: 30px;
+}
+
+.price-slider {
+    position: relative;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.slider-track {
+    position: absolute;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    left: 20%;
+    right: 20%;
+}
+
+.price-values {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-values span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Checkboxes */
+.filter-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox-item label {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Filter Actions */
+.filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Featured Cars - Modified to ensure 2-3 cars per row */
+.featured-cars {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always show 3 cars per row on large screens */
+    gap: 30px;
+}
+
+.car-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.car-image {
+    width: 100%;  /* Full width of its container */
+    height: 300px; /* Fixed height, but can be adjusted */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.car-image img {
+    width: 100%;  /* Fill width of container */
+    height: 100%; /* Fill height of container */
+    object-fit: cover;  /* Maintain aspect ratio, cover entire area */
+    object-position: center; /* Center the image */
+    transition: transform 0.3s ease;  /* Smooth zoom effect on hover */
+}
+
+.car-card:hover .car-image img {
+    transform: scale(1.1);  /* Slight zoom effect on hover */
+}
+
+.car-placeholder {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.car-details {
+    padding: 20px;
+}
+
+.car-details h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.car-price {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.car-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.car-specs span {
+    background-color: rgba(52, 152, 219, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.view-details-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Model Suggestions */
+.suggestions-list {
+    position: absolute;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 6px 6px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 10;
+    margin-top: -6px;
+    display: none;
+}
+
+.suggestions-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    list-style: none;
+    transition: background-color 0.2s ease;
+}
+
+.suggestions-list li:hover {
+    background-color: var(--section-background);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .cars-grid {
+        grid-template-columns: repeat(2, 1fr); /* Show 2 cars per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-input-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .cars-grid {
+        grid-template-columns: 1fr; /* Show 1 car per row on very small screens */
+    }
+    
+    .search-box {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .filter-checkboxes {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+    }
+}
+
+.mileage-slider-container {
+    padding: 0 10px;
+    margin-top: 30px;
+}
+
+.mileage-slider {
+    position: relative;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.mileage-slider .slider-track {
+    position: absolute;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    left: 20%;
+    right: 20%;
+}
+
+.mileage-values {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mileage-values span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.car-action-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.car-action-buttons a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.view-details-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.view-details-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.buy-car-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+.buy-car-btn:hover {
+    background-color: var(--primary-hover);
+}
