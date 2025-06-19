@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: Random21402number/car-website-docker
     container_name: php_app
     ports:
       - "8080:80"
